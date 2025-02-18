@@ -1,0 +1,83 @@
+@font-face {
+  font-family: "Alata";
+  font-weight: 400;
+  src: url("/fonts/Alata/Alata-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Josefin Sans";
+  font-weight: 300;
+  src: url("/fonts/Josefin_Sans/static/JosefinSans-Light.ttf");
+}
+
+:root {
+  font: .9375em / normal "Alata", sans-serif; 
+  --color-dark-gray: hsl(0, 0%, 55%);
+  --color-very-dark-gray: hsl(0, 0%, 41%);
+  --outline-offset: 5px;
+  --page-max-width: 1110px;
+  --section-padding-block: 8rem;
+  --transition-smooth: .1s linear;
+
+  @media (max-width: 1180px) {
+    --section-padding-block: 4rem;
+  }
+}
+
+body {
+  margin: unset;
+}
+
+h1 {
+  font-family: "Josefin Sans";
+  font-size: 5rem;
+  font-weight: 300;
+  line-height: 1;
+  margin: unset;
+
+  @media (max-width: 860px) {
+    font-size: 2.75rem;
+  }
+}
+
+h2 {
+  font-family: "Josefin Sans";
+  font-size: 3rem;
+  font-weight: 300;
+  margin-block: 0 2rem;
+  text-transform: uppercase;
+
+  @media (max-width: 860px) {
+    font-size: 2rem;
+  }
+}
+
+p {
+  color: var(--color-very-dark-gray);
+  line-height: 1.5;
+}
+
+button {
+  background: unset;
+  border: unset;
+
+  & > :is(img, svg) {
+    display: block;
+  }
+}
+
+a {
+  align-content: center;
+  color: unset;
+  display: inline flow-root;
+  outline-offset: var(--outline-offset);
+  text-decoration: unset;
+
+  & > :is(img, svg) {
+    display: block;
+  }
+}
+
+picture {
+  display: contents;
+}

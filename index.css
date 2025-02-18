@@ -1,0 +1,428 @@
+@import url(/styles/defaults.css) layer(defaults);
+
+#page-header {
+  & {
+    background: 
+      url("/images/desktop/image-hero.jpg") top / cover no-repeat,
+      hsl(0, 0%, 0%, .6)
+    ;
+    background-blend-mode: darken;
+    color: white;
+    display: flex;
+    flex-flow: column;
+    gap: 8rem;
+    padding-block: 4rem 8rem;
+    padding-inline: max(1.5rem, calc((100% - var(--page-max-width)) / 2));
+
+    @media (max-width: 860px) {
+      background: 
+        url("/images/mobile/image-hero.jpg") top / cover no-repeat,
+        hsl(0, 0%, 0%, .4)
+      ;
+      gap: unset;
+      padding-block: 2rem;
+    }
+  }
+
+  @scope (&) {
+    > div {
+      display: flex;
+      justify-content: space-between;
+
+      & button.menu {
+        @media (min-width: 860px) {
+          display: none;
+        }
+      }
+
+      > nav.pages {
+        display: flex;
+        gap: 2.5rem;
+        grid-area: pages;
+        width: max-content;
+
+        @media (max-width: 860px) {
+          display: none;
+        }
+  
+        & a {
+          &::after {
+            background: white;
+            border-radius: 3px;
+            content: "";
+            display: block;
+            height: 2px;
+            margin-inline: auto;
+            margin-top: 8px;
+            width: 0px;
+          }
+  
+          @media (hover) {
+            &:hover {
+              &::after {
+                width: 60%;
+              }
+            }
+          }
+        }
+      }
+
+      #page-header-nav-popover {
+        background: black;
+        border: unset;
+        box-sizing: border-box;
+        color: white;
+        flex-flow: column;
+        height: 100%;
+        margin-inline: 0 auto;
+        max-width: 375px;
+        opacity: 0;
+        padding: 2rem 1.5rem;
+        transform: translateX(-100%);
+        transition: .2s allow-discrete;
+        transition-property: display, opacity, transform;
+        width: 100%;
+
+        &:popover-open {
+          display: flex;
+          opacity: 1;
+          transform: translateX(0);
+
+          &::backdrop {
+            background: hsl(0, 0%, 0%, .6);
+
+            @starting-style {
+              background: transparent;
+            }
+          }
+
+          @starting-style {
+            opacity: 0;
+            transform: translateX(-100%)
+          }
+        }
+
+        &::backdrop {
+          transition: .2s allow-discrete;
+          transition-property: display, background;
+        }
+
+        > div {
+          align-items: center;
+          display: flex;
+          justify-content: space-between;
+        }
+
+        > ul {
+          display: flex;
+          flex-flow: column;
+          font-family: "Josefin Sans";
+          font-size: 2rem;
+          font-weight: 300;
+          gap: 2rem;
+          list-style: none;
+          margin-block: auto;
+          padding: unset;
+          text-transform: uppercase;
+        }
+      }
+    }
+
+    & h1 {
+      border: 2px solid white;
+      box-sizing: border-box;
+      color: white;
+      padding: 2.5rem;
+      text-transform: uppercase;
+      width: 43rem;
+
+      @media (max-width: 860px) {
+        margin-block: 12rem;
+        max-width: 25rem;
+        padding: 1.5rem;
+        width: 100%;
+      }
+    }
+  }
+}
+
+#section-introduction {
+  & {
+    display: flex;
+    padding-block: var(--section-padding-block);
+    padding-inline: max(1.5rem, calc((100% - var(--page-max-width)) / 2));
+
+    @media (max-width: 1180px) {
+      flex-flow: column;
+    }
+  }
+
+  @scope (&) {
+    & img {
+      flex: 1;
+
+      @media (max-width: 1180px) {
+        margin-inline: auto;
+        max-width: 600px;
+        width: 100%;
+      }
+    }
+
+    .content {
+      align-self: end;
+      background: white;
+      box-sizing: border-box;
+      flex: none;
+      margin-left: -11rem;
+      padding: 7rem 0 0 7rem;
+      width: 55ch;
+
+      @media (max-width: 1180px) {
+        margin-inline: auto;
+        max-width: 45ch;
+        padding: 2rem 2rem 0;
+        text-align: center;
+        width: unset;
+      }
+
+      @media (max-width: 860) {
+        margin-inline: auto;
+        max-width: 40ch;
+        padding: 2rem 2rem 0;
+        text-align: center;
+        width: unset;
+      }
+    }
+  }
+}
+
+#section-creations {
+  & {
+    display: grid;
+    gap: 5rem 0;
+    grid:
+      "title       all" max-content
+      "list       list"
+      / 1fr  max-content;
+    padding-block: var(--section-padding-block);
+    padding-inline: max(1.5rem, calc((100% - var(--page-max-width)) / 2));
+
+    @media (max-width: 1180px) {
+      gap: 3rem 0;
+      grid:
+        "title"
+        "list"
+        "all";
+      justify-items: center;
+    }
+  }
+
+  @scope (&) {
+    > h2 {
+      align-self: center;
+      grid-area: title;
+      margin: unset;
+      width: fit-content;
+    }
+
+    > a {
+      align-content: center;
+      align-self: center;
+      border: 1px solid black;
+      grid-area: all;
+      height: 2.5rem;
+      letter-spacing: .3em;
+      padding-inline: 2.5rem;
+      text-transform: uppercase;
+      transition: var(--transition-smooth);
+      transition-property: background, border-color, color;
+      width: max-content;
+
+      @media (hover) {
+        &:hover {
+          background: black;
+          border-color: transparent;
+          color: white;
+        }
+      }
+    }
+
+    > ul {
+      color: white;
+      display: grid;
+      font: 2rem / 1 "Josefin Sans", sans-serif;
+      gap: 2rem;
+      grid: repeat(2, auto) / repeat(4, auto);
+      grid-area: list;
+      list-style: none;
+      margin: unset;
+      padding: unset;
+      text-transform: uppercase;
+
+      @media (max-width: 1180px) {
+        grid: repeat(4, auto) / repeat(2, auto);
+        margin-inline: auto;
+        max-width: 800px;
+      }
+
+      @media (max-width: 860px) {
+        font-size: 1.75rem;
+        grid: repeat(8, auto) / auto;
+        justify-self: center;
+      }
+
+      & a {
+        display: flex;
+        outline-offset: 10px;
+        position: relative;
+        width: 100%;
+
+        @media (hover) {
+          &:hover {
+            & img {
+              opacity: .25;
+            }
+
+            & span {
+              background: unset;
+              color: black;
+            }
+          }
+        }
+
+        & img {
+          flex: auto;
+          transition: var(--transition-smooth);
+          transition-property: opacity;
+          width: 100%;
+        }
+
+        & span {
+          align-content: end;
+          background: linear-gradient(to bottom, transparent, hsl(0, 0%, 0%, .5));
+          inset: 0;
+          padding: 2.5rem;
+          position: absolute;
+          transition: var(--transition-smooth);
+          transition-property: background, color;
+
+          @media (max-width: 860px) {
+            padding: 1.5rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+#page-footer {
+  & {
+    align-items: center;
+    background: black;
+    color: white;
+    display: grid;
+    gap: 1.5rem;
+    grid:
+      "logo  media"
+      "pages copyright";
+    justify-content: space-between;
+    padding-block: 3rem;
+    padding-inline: max(1.5rem, calc((100% - var(--page-max-width)) / 2));
+
+    @media (max-width: 860px) {
+      grid:
+        "logo"
+        "pages"
+        "media"
+        "copyright";
+      justify-content: center;
+      justify-items: center;
+      text-align: center;
+    }
+  }
+
+  @scope (&) {
+    > img {
+      grid-area: logo;
+    }
+
+    > nav.pages {
+      display: flex;
+      gap: 2.5rem;
+      grid-area: pages;
+      width: max-content;
+
+      @media (max-width: 860px) {
+        flex-flow: column;
+        gap: 1rem;
+        margin-block: 1rem;
+      }
+
+
+      & a {
+        &::after {
+          background: white;
+          border-radius: 3px;
+          content: "";
+          display: block;
+          height: 2px;
+          margin-inline: auto;
+          margin-top: 8px;
+          width: 0px;
+        }
+
+        @media (hover) {
+          &:hover {
+            &::after {
+              width: 60%;
+            }
+          }
+        }
+      }
+    }
+
+    > nav.media {
+      align-items: end;
+      display: flex;
+      gap: 1rem;
+      grid-area: media;
+      justify-self: end;
+      width: max-content;
+
+      @media (max-width: 860px) {
+        justify-self: center;
+      }
+
+      & a {
+        &::after {
+          background: white;
+          border-radius: 3px;
+          content: "";
+          display: block;
+          height: 2px;
+          margin-inline: auto;
+          margin-top: 8px;
+          width: 0px;
+        }
+
+        @media (hover) {
+          &:hover {
+            &::after {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+
+    > small {
+      color: var(--color-dark-gray);
+      grid-area: copyright;
+      justify-self: end;
+
+      @media (max-width: 860px) {
+        justify-self: center;
+      }
+    }
+  }
+}
