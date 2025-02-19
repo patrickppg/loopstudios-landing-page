@@ -4,7 +4,7 @@
   & {
     background: 
       url("/images/desktop/image-hero.jpg") top / cover no-repeat,
-      hsl(0, 0%, 0%, .6)
+      hsl(0, 0%, 0%, .4)
     ;
     background-blend-mode: darken;
     color: white;
@@ -46,7 +46,7 @@
         }
   
         & a {
-          &::after {
+          & span {
             background: white;
             border-radius: 3px;
             content: "";
@@ -59,7 +59,7 @@
   
           @media (hover) {
             &:hover {
-              &::after {
+              & span {
                 width: 60%;
               }
             }
@@ -360,7 +360,7 @@
 
 
       & a {
-        &::after {
+        & span {
           background: white;
           border-radius: 3px;
           content: "";
@@ -373,7 +373,7 @@
 
         @media (hover) {
           &:hover {
-            &::after {
+            & span {
               width: 60%;
             }
           }
@@ -394,7 +394,7 @@
       }
 
       & a {
-        &::after {
+        & span {
           background: white;
           border-radius: 3px;
           content: "";
@@ -407,7 +407,7 @@
 
         @media (hover) {
           &:hover {
-            &::after {
+            & span {
               width: 100%;
             }
           }
